@@ -1,0 +1,67 @@
+<hc:Window x:Class="DiscoursePublisher.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewmodels="clr-namespace:DiscoursePublisher.ViewModels"
+        xmlns:hc="https://handyorg.github.io/handycontrol"
+        mc:Ignorable="d"
+        Title="Discourse Publisher" Height="600" Width="1000"
+        WindowStartupLocation="CenterScreen">
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="15"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <Button Style="{StaticResource ButtonPrimary}" Content="导入帖子 (JSON)" Command="{Binding ImportPostsCommand}"/>
+            <Button Content="发布所有待处理帖子" Command="{Binding PublishAllCommand}" Margin="10,0,0,0"/>
+            <Button Content="查询论坛信息" Command="{Binding ShowMetaInfoCommand}" Margin="10,0,0,0"/>
+            <Button Content="设置" Command="{Binding ShowSettingsCommand}" Margin="10,0,0,0"/>
+        </StackPanel>
+
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="150"/>
+            </Grid.RowDefinitions>
+
+            <DataGrid Grid.Row="0"
+                      ItemsSource="{Binding Posts}"
+                      AutoGenerateColumns="False"
+                      CanUserAddRows="False"
+                      IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="状态" Binding="{Binding Status}" Width="120"/>
+                    <DataGridTextColumn Header="标题" Binding="{Binding Title}" Width="*"/>
+                    <DataGridTextColumn Header="分类 ID" Binding="{Binding CategoryId}" Width="100"/>
+                    <DataGridTextColumn Header="标签" Binding="{Binding Tags, Converter={StaticResource StringListToStringConverter}}" Width="220"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <ProgressBar Grid.Row="1" Value="{Binding PublishProgress}" Margin="0,5,0,5" Visibility="{Binding IsNotPublishing, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter=Invert}"/>
+
+            <hc:Card Grid.Row="2" Header="发布日志">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <ItemsControl ItemsSource="{Binding PublishLogs}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <TextBox Text="{Binding Mode=OneWay}" TextWrapping="Wrap" IsReadOnly="True" BorderThickness="0" Background="Transparent"/>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </hc:Card>
+        </Grid>
+
+        <StatusBar Grid.Row="3" Margin="0,5,0,0">
+            <StatusBarItem>
+                <TextBlock Text="{Binding Posts.Count, StringFormat={}{0} 篇帖子已加载}"/>
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+</hc:Window>

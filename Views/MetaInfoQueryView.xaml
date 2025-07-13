@@ -1,0 +1,54 @@
+<hc:Window x:Class="DiscoursePublisher.Views.MetaInfoQueryView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:hc="https://handyorg.github.io/handycontrol"
+        mc:Ignorable="d"
+        Title="论坛元信息查询" Height="500" Width="800"
+        WindowStartupLocation="CenterOwner">
+    <Grid Margin="15">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="15" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Style="{StaticResource TextBlockTitle}" Text="分类 (Categories)" Margin="0,0,0,10"/>
+            <hc:Card Grid.Row="1">
+                <DataGrid ItemsSource="{Binding Categories}" AutoGenerateColumns="False" IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
+                        <DataGridTextColumn Header="名称" Binding="{Binding Name}" Width="*"/>
+                        <DataGridTextColumn Header="Slug" Binding="{Binding Slug}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </hc:Card>
+        </Grid>
+
+        <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch" Background="Transparent"/>
+
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Style="{StaticResource TextBlockTitle}" Text="标签 (Tags)" Margin="0,0,0,10"/>
+            <hc:Card Grid.Row="1">
+                <DataGrid ItemsSource="{Binding Tags}" AutoGenerateColumns="False" IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="名称" Binding="{Binding Text}" Width="*"/>
+                        <DataGridTextColumn Header="帖子数" Binding="{Binding Count}" Width="100"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </hc:Card>
+        </Grid>
+
+        <hc:LoadingCircle Grid.ColumnSpan="3" Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}" DotSpeed="0.5" />
+    </Grid>
+</hc:Window>

@@ -1,0 +1,35 @@
+[
+  {
+    "title": "x探索WPF：构建现代化桌面应用的艺术",
+    "content": "本文将深入探讨 **WPF (Windows Presentation Foundation)** 的核心概念，包括 XAML、数据绑定和 MVVM 模式。\n\n### 主要内容\n- XAML 语法基础\n- 依赖属性与附加属性\n- MVVM 架构模式详解",
+    "categoryId": 5,
+    "tags": [
+      "wpf",
+      "csharp",
+      "mvvm",
+      "dotnet"
+    ]
+  },
+  {
+    "title": "xHandyControl：让你的WPF应用焕然一新",
+    "content": "介绍一个功能强大且美观的开源 WPF UI 库：**HandyControl**。\n\n> HandyControl 是一款简单易用的WPF控件库，它几乎包含了开发一个WPF项目所需要的全部常用控件。\n\n我们将通过实例展示如何快速集成并使用它。",
+    "categoryId": 5,
+    "tags": [
+      "wpf",
+      "ui",
+      "opensource",
+      "handycontrol"
+    ]
+  },
+  {
+    "title": "xDiscourse API 自动化实战",
+    "content": "本教程将指导你如何使用 C# 和 `HttpClient` 与 **Discourse API** 进行交互，实现自动化发帖、回帖和用户管理等功能。",
+    "categoryId": 5,
+    "tags": [
+      "api",
+      "csharp",
+      "automation",
+      "discourse"
+    ]
+  }
+]
