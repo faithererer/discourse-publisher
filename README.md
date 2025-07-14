@@ -10,6 +10,9 @@
 - **配置持久化**: 自动保存您的论坛地址和 API 凭据，无需每次都输入。
 - **可扩展的设计**: 采用 MVVM 架构和工厂模式，未来可轻松扩展以支持 Markdown、CSV 等更多导入格式。
 - **详细的日志**: 在发布过程中提供实时的进度条和详细的成功/失败日志。
+## 👀 界面截图
+<img width="1000" height="600" alt="PixPin_2025-07-14_14-23-54" src="https://github.com/user-attachments/assets/8674b01d-c9bd-47b6-946a-0329ec4f942b" />
+<img width="790" height="496" alt="PixPin_2025-07-14_14-24-34" src="https://github.com/user-attachments/assets/1cb92aa3-16c6-4974-a709-5e50704e77b2" />
 
 ## 🚀 如何开始
 
@@ -22,6 +25,7 @@
 - **API 用户名**: 您用于生成 API 密钥的用户名。
 
 配置将自动保存在 `%AppData%\DiscoursePublisher\settings.json`。
+
 
 ### 2. 准备帖子数据
 
